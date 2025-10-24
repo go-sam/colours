@@ -119,17 +119,17 @@ func RGB2ANSI(r, g, b uint8) string {
 	return fmt.Sprintf("\033[38;2;%d;%d;%dm", r, g, b)
 }
 
-func randomDefaultColour() Colour {
+func RandomDefaultColour() Colour {
 	var r = random.Intn(len(colours))
 	return colours[r]
 }
 
-func randomRGBColour() Colour {
-	r, g, b := randomRGB()
+func RandomRGBColour() Colour {
+	r, g, b := RandomRGB()
 	return Colour(fmt.Sprintf("\033[38;2;%d;%d;%dm", r, g, b))
 }
 
-func randomRGB() (uint8, uint8, uint8) {
+func RandomRGB() (uint8, uint8, uint8) {
 	r := uint8(random.Intn(256))
 	g := uint8(random.Intn(256))
 	b := uint8(random.Intn(256))
@@ -137,9 +137,9 @@ func randomRGB() (uint8, uint8, uint8) {
 }
 
 func ApplyRandomColour(text string) string {
-	return randomDefaultColour().Apply(text)
+	return RandomDefaultColour().Apply(text)
 }
 
 func ApplyRandomRGBColour(text string) string {
-	return randomRGBColour().Apply(text)
+	return RandomRGBColour().Apply(text)
 }
