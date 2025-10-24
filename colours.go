@@ -115,6 +115,10 @@ var random = rand.New(rand.NewSource(time.Now().UnixNano()))
 
 // --- Random Colours --- //
 
+func RGB2ANSI(r, g, b uint8) string {
+	return fmt.Sprintf("\033[38;2;%d;%d;%dm", r, g, b)
+}
+
 func randomDefaultColour() Colour {
 	var r = random.Intn(len(colours))
 	return colours[r]
