@@ -125,10 +125,15 @@ func randomDefaultColour() Colour {
 }
 
 func randomRGBColour() Colour {
-	r := random.Intn(256)
-	g := random.Intn(256)
-	b := random.Intn(256)
+	r, g, b := randomRGB()
 	return Colour(fmt.Sprintf("\033[38;2;%d;%d;%dm", r, g, b))
+}
+
+func randomRGB() (uint8, uint8, uint8) {
+	r := uint8(random.Intn(256))
+	g := uint8(random.Intn(256))
+	b := uint8(random.Intn(256))
+	return r, g, b
 }
 
 func ApplyRandomColour(text string) string {
